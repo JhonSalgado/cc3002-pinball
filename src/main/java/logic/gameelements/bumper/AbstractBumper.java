@@ -1,5 +1,9 @@
 package logic.gameelements.bumper;
 
+import controller.Game;
+import logic.bonus.ExtraBallBonus;
+import logic.bonus.JackPotBonus;
+
 public abstract class AbstractBumper implements Bumper {
     protected int hitScore;
     protected int baseHitScore;
