@@ -1,10 +1,14 @@
 package logic.gameelements.bumper;
 
-import controller.Game;
-import logic.bonus.ExtraBallBonus;
-import logic.bonus.JackPotBonus;
+import java.util.Observable;
 
-public abstract class AbstractBumper implements Bumper {
+/**
+ * Abstract Class that represents a Bumper object.
+ *
+ * @author Jhon Salgado
+ */
+
+public abstract class AbstractBumper extends Observable implements Bumper{
     protected int hitScore;
     protected int baseHitScore;
     protected int upgradedHitScore;
@@ -12,20 +16,25 @@ public abstract class AbstractBumper implements Bumper {
     protected int timesHit;
 
 
+    /**
+     * Gets the remaining hits the bumper has to receive to upgrade.
+     *
+     * @return the remaining hits to upgrade the bumper
+     */
     @Override
     public int remainingHitsToUpgrade() {
         return hitsToUpgrade-timesHit;
 
     }
 
+    /**
+     * Gets whether the bumper is currently upgraded or not.
+     *
+     * @return true if the bumper is upgraded, false otherwise
+     */
     @Override
     public boolean isUpgraded() {
-        if(hitScore==upgradedHitScore){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return hitScore == upgradedHitScore;
     }
 
     @Override
@@ -36,7 +45,7 @@ public abstract class AbstractBumper implements Bumper {
     @Override
     public void downgrade() {
         hitScore=baseHitScore;
-        timesHit=hitsToUpgrade;
+        timesHit=0;
     }
 
     @Override
@@ -44,8 +53,10 @@ public abstract class AbstractBumper implements Bumper {
         timesHit++;
         if (remainingHitsToUpgrade()==0){
             this.upgrade();
+            this.setChanged();
+            this.notifyObservers(0.1);
         }
-        return 0;
+        return getScore();
     }
 
     @Override

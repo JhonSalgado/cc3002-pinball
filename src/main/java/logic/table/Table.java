@@ -1,6 +1,8 @@
 package logic.table;
 
 import logic.gameelements.bumper.Bumper;
+import logic.gameelements.target.DropTarget;
+import logic.gameelements.target.SpotTarget;
 import logic.gameelements.target.Target;
 
 import java.util.List;
@@ -47,6 +49,20 @@ public interface Table {
     List<Target> getTargets();
 
     /**
+     * Gets the {@link List} of {@link SpotTarget}s in the table.
+     *
+     * @return the SpotTargets in the table
+     */
+    List<SpotTarget> getSpotTargets();
+
+    /**
+     * Gets the {@link List} of {@link SpotTarget}s in the table.
+     *
+     * @return the DropTargets in the table
+     */
+    List<DropTarget> getDropTargets();
+
+    /**
      * Resets all {@link logic.gameelements.target.DropTarget} in the table. Make them active.
      */
     void resetDropTargets();
@@ -62,4 +78,5 @@ public interface Table {
      * @return true if the table is playable, false otherwise
      */
     boolean isPlayableTable();
+
 }

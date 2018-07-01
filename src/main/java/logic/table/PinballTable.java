@@ -1,5 +1,6 @@
 package logic.table;
 
+import logic.bonus.ExtraBallBonus;
 import logic.gameelements.bumper.Bumper;
 import logic.gameelements.bumper.KickerBumper;
 import logic.gameelements.bumper.PopBumper;
@@ -7,14 +8,51 @@ import logic.gameelements.target.DropTarget;
 import logic.gameelements.target.SpotTarget;
 import logic.gameelements.target.Target;
 
-import java.util.List;
+import java.util.*;
 
-public class PinballTable implements Table{
-    public String name;
-    public List<Bumper> bumpers;
-    public List<DropTarget> dropTargets;
-    public List<Target> targets;
+public class PinballTable extends Observable implements Observer, Table{
+    private String name;
+    private List<Bumper> bumpers=new LinkedList<>();
+    private List<DropTarget> dropTargets=new LinkedList<>();
+    private List<SpotTarget> spotTargets=new LinkedList<>();
+    private List<Target> targets=new LinkedList<>();
+    private boolean isPlayableTable;
 
+
+    /**
+     * Creates an instance of PinballTable.
+     *
+     * @param name
+     * @param numberOfBumpers
+     * @param prob
+     * @param numberOfTargets
+     * @param numberOfDropTargets
+     */
+    public PinballTable(String name, int numberOfBumpers, double prob, int numberOfTargets, int numberOfDropTargets){
+        this.name = name;
+        isPlayableTable=true;
+        Random rand = new Random();
+        for (int i = 1; i <= numberOfBumpers; i++) {
+            if (rand.nextDouble() < prob) {
+                PopBumper popBumper = new PopBumper();
+                bumpers.add(popBumper);
+            } else {
+                KickerBumper kickerBumper = new KickerBumper();
+                bumpers.add(kickerBumper);
+            }
+        }
+        for(int i=1; i<=numberOfTargets;i++){
+            SpotTarget spotTarget=new SpotTarget();
+            spotTargets.add(spotTarget);
+            targets.add(spotTarget);
+        }
+        for(int i=1; i<=numberOfDropTargets;i++){
+            DropTarget dropTarget=new DropTarget();
+            targets.add(dropTarget);
+            dropTargets.add(dropTarget);
+        }
+        
+    }
 
     /**
      * Gets the table name.
@@ -73,6 +111,25 @@ public class PinballTable implements Table{
     }
 
     /**
+     * Gets the {@link List} of {@link SpotTarget}s in the table.
+     *
+     * @return the targets in the table
+     */
+    @Override
+    public List<SpotTarget> getSpotTargets() { return spotTargets;
+    }
+
+    /**
+     * Gets the {@link List} of {@link DropTarget}s in the table.
+     *
+     * @return the targets in the table
+     */
+    @Override
+    public List<DropTarget> getDropTargets() {
+        return dropTargets;
+    }
+
+    /**
      * Resets all {@link DropTarget} in the table. Make them active.
      */
     @Override
@@ -88,7 +145,9 @@ public class PinballTable implements Table{
     @Override
     public void upgradeAllBumpers() {
         for(Bumper bumper:bumpers){
-            bumper.upgrade();
+            if(!bumper.isUpgraded()) {
+                bumper.upgrade();
+            }
         }
     }
 
@@ -99,7 +158,24 @@ public class PinballTable implements Table{
      */
     @Override
     public boolean isPlayableTable() {
-        return false;
+        return isPlayableTable;
+    }
+
+    /**
+     * This method is called whenever the observed object is changed. An
+     * application calls an <tt>Observable</tt> object's
+     * <code>notifyObservers</code> method to have all the object's
+     * observers notified of the change.
+     *
+     * @param o   the observable object.
+     * @param arg an argument passed to the <code>notifyObservers</code>
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        if (getNumberOfDropTargets()==getCurrentlyDroppedDropTargets()){
+            setChanged();
+            notifyObservers();
+        }
     }
 }
 

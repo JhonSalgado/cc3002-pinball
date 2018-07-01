@@ -5,23 +5,26 @@ import java.util.Random;
 public class DropTarget extends AbstractTarget{
 
     public DropTarget(){
-        super.active=true;
+        active=true;
     }
 
     @Override
     public int hit() {
         if(isActive()){
-            Random rnd= new Random();
-            if(rnd.nextInt(100)<30){
-                //ExtraBallBonus
-            }
             active=false;
+            setChanged();
+            notifyObservers(0.3);
         }
-        return 0;
+        return getScore();
     }
 
     @Override
     public int getScore() {
-        return 100;
+        if(isActive()) {
+            return 100;
+        }
+        else{
+            return 0;
+        }
     }
 }

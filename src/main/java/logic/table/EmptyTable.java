@@ -3,6 +3,7 @@ package logic.table;
 
 import logic.gameelements.bumper.Bumper;
 import logic.gameelements.target.DropTarget;
+import logic.gameelements.target.SpotTarget;
 import logic.gameelements.target.Target;
 
 import java.util.List;
@@ -55,6 +56,26 @@ public class EmptyTable implements Table {
      */
     @Override
     public List<Target> getTargets() {
+        return null;
+    }
+
+    /**
+     * Gets the {@link List} of {@link SpotTarget}s in the table.
+     *
+     * @return the SpotTargets in the table
+     */
+    @Override
+    public List<SpotTarget> getSpotTargets() {
+        return null;
+    }
+
+    /**
+     * Gets the {@link List} of {@link SpotTarget}s in the table.
+     *
+     * @return the DropTargets in the table
+     */
+    @Override
+    public List<DropTarget> getDropTargets() {
         return null;
     }
 

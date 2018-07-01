@@ -1,5 +1,8 @@
 package logic.gameelements;
 
+
+import java.util.Observable;
+
 /**
  * Interface that represents a hittable object.
  *

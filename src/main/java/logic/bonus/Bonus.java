@@ -2,6 +2,9 @@ package logic.bonus;
 
 import controller.Game;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * Interface that represents a bonus object.
  *
@@ -10,7 +13,7 @@ import controller.Game;
  * @see JackPotBonus
  * @see DropTargetBonus
  */
-public interface Bonus {
+public interface Bonus extends Observer {
     /**
      * Gets the number of times the bonus has been triggered.
      *
@@ -24,4 +27,16 @@ public interface Bonus {
      * @param game the game controller object
      */
     void trigger(Game game);
+
+    /**
+     * This method is called whenever the observed object is changed. An
+     * application calls an <tt>Observable</tt> object's
+     * <code>notifyObservers</code> method to have all the object's
+     * observers notified of the change.
+     *
+     * @param o   the observable object.
+     * @param arg an argument passed to the <code>notifyObservers</code>
+     */
+    @Override
+    void update(Observable o, Object arg);
 }

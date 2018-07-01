@@ -3,13 +3,14 @@ package logic.gameelements.target;
 public class SpotTarget extends AbstractTarget {
 
     public SpotTarget(){
-        super.active=true;
+        active=true;
     }
 
     @Override
     public int hit() {
         if(isActive()){
-            //JackPotBonus;
+            setChanged();
+            notifyObservers();
             active=false;
         }
         return 0;

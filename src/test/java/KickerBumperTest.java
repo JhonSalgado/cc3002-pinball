@@ -6,12 +6,11 @@ public class KickerBumperTest {
     private KickerBumper kickerBumper;
 
     @Before
-    public void setUP(){
-        kickerBumper=new KickerBumper();
+    public void setUP(){kickerBumper=new KickerBumper();
     }
 
     @Test
-    public void allTest(){
+    public void FunctionalityTest(){
 
         boolean upgradeExpected=false;
         assertEquals(upgradeExpected,kickerBumper.isUpgraded());
