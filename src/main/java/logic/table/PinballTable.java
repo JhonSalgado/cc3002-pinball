@@ -10,6 +10,11 @@ import logic.gameelements.target.Target;
 
 import java.util.*;
 
+/**
+ * Class that represents a Pinball Table object.
+ *
+ * @author Jhon Salgado
+ */
 public class PinballTable extends Observable implements Observer, Table{
     private String name;
     private List<Bumper> bumpers=new LinkedList<>();

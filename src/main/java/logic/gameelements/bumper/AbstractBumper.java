@@ -7,7 +7,6 @@ import java.util.Observable;
  *
  * @author Jhon Salgado
  */
-
 public abstract class AbstractBumper extends Observable implements Bumper{
     protected int hitScore;
     protected int baseHitScore;

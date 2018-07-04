@@ -8,6 +8,11 @@ import logic.gameelements.target.Target;
 
 import java.util.List;
 
+/**
+ * Class that represents a empty Table object.
+ *
+ * @author Jhon Salgado
+ */
 public class EmptyTable implements Table {
     /**
      * Gets the table name.
