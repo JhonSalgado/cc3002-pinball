@@ -21,12 +21,17 @@ public class DropTarget extends AbstractTarget{
      */
     @Override
     public int hit() {
+        double[] args=new double[2];
+        args[0]=0;
+        args[1]=0;
         if(isActive()){
+            args[0]=getScore();
+            args[1]=0.3;
             active=false;
-            setChanged();
-            notifyObservers(0.3);
         }
-        return getScore();
+        setChanged();
+        notifyObservers(args);
+        return (int)args[0];
     }
 
     /**

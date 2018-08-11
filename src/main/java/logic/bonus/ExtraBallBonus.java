@@ -62,7 +62,8 @@ public class ExtraBallBonus extends AbstractBonus implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         Random rnd= new Random(seed);
-        if(rnd.nextDouble()<((double)arg)){
+        double[] prob=(double[])arg;
+        if(rnd.nextDouble()<(prob[1])){
             trigger(this.game);
         }
     }

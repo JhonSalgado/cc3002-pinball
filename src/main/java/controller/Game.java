@@ -21,7 +21,7 @@ import java.util.Observer;
  *
  * @author Juan-Pablo Silva
  */
-public class Game {
+public class Game implements Observer {
     private Table table;
     protected int balls;
     protected int score;
@@ -236,6 +236,7 @@ public class Game {
         List<Bumper> bumpers= getBumpers();
         for(Bumper bumper:bumpers){
             ((Observable)bumper).addObserver(extraBallBonus);
+            ((Observable)bumper).addObserver(this);
         }
         List<SpotTarget> spotTargets=getSpotTargets();
         for(SpotTarget spotTarget:spotTargets){
@@ -245,6 +246,7 @@ public class Game {
         for(DropTarget dropTarget:dropTargets){
             dropTarget.addObserver(extraBallBonus);
             dropTarget.addObserver((Observer) table);
+            dropTarget.addObserver(this);
         }
         ((Observable)table).addObserver(dropTargetBonus);
     }
@@ -255,7 +257,8 @@ public class Game {
      * @return the new number of available balls
      */
     public int dropBall() {
-        return balls--;
+        if(this.balls==0)return 0;
+        else return --balls;
     }
 
     /**
@@ -270,4 +273,18 @@ public class Game {
         else {return false;}
     }
 
+    /**
+     * This method is called whenever the observed object is changed. An
+     * application calls an <tt>Observable</tt> object's
+     * <code>notifyObservers</code> method to have all the object's
+     * observers notified of the change.
+     *
+     * @param o   the observable object.
+     * @param arg an argument passed to the <code>notifyObservers</code>
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        double[]args=(double[])arg;
+        this.addScore((int)args[0]);
+    }
 }

@@ -22,8 +22,9 @@ public abstract class AbstractBumper extends Observable implements Bumper{
      */
     @Override
     public int remainingHitsToUpgrade() {
-        return hitsToUpgrade-timesHit;
-
+        int dif= hitsToUpgrade-timesHit;
+        if(dif>=0)return dif;
+        else return 0;
     }
 
     /**
@@ -50,11 +51,16 @@ public abstract class AbstractBumper extends Observable implements Bumper{
     @Override
     public int hit() {
         timesHit++;
+        double[] args=new double[2];
+        args[0]=getScore();
+        args[1]=0;
         if (remainingHitsToUpgrade()==0){
             this.upgrade();
-            this.setChanged();
-            this.notifyObservers(0.1);
+            args[0]=getScore();
+            args[1]=0.1;
         }
+        this.setChanged();
+        this.notifyObservers(args);
         return getScore();
     }
 

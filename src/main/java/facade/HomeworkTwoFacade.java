@@ -32,6 +32,9 @@ public class HomeworkTwoFacade {
     private Game game;
     private Boolean isTableSet=false;
 
+    public HomeworkTwoFacade(){
+        game=new Game(3);
+    }
     /**
      * Gets whether the current table is playable or not.
      *
