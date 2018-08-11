@@ -9,6 +9,7 @@ import java.util.Observable;
  */
 public abstract class AbstractTarget extends Observable implements Target {
     protected boolean active;
+    protected int score;
 
     /**
      * Gets whether the target is currently active or not.
@@ -26,6 +27,21 @@ public abstract class AbstractTarget extends Observable implements Target {
     @Override
     public void reset() {
         active=true;
+    }
+
+    /**
+     * Defines that a hittable object has to have a score when it is hit.
+     *
+     * @return the current score of the object when hit
+     */
+    @Override
+    public int getScore() {
+        if(isActive()) {
+            return score;
+        }
+        else{
+            return 0;
+        }
     }
 
 }

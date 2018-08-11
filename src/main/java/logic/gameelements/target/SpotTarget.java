@@ -9,6 +9,7 @@ public class SpotTarget extends AbstractTarget {
 
     public SpotTarget(){
         active=true;
+        score=0;
     }
 
     /**
@@ -24,16 +25,6 @@ public class SpotTarget extends AbstractTarget {
             notifyObservers();
             active=false;
         }
-        return 0;
-    }
-
-    /**
-     * Defines that a hittable object has to have a score when it is hit.
-     *
-     * @return the current score of the object when hit
-     */
-    @Override
-    public int getScore() {
         return 0;
     }
 }

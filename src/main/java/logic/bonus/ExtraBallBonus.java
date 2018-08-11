@@ -12,7 +12,6 @@ import java.util.Random;
  * @author Jhon Salgado
  */
 public class ExtraBallBonus extends AbstractBonus implements Observer {
-    Game game;
     long seed;
 
 

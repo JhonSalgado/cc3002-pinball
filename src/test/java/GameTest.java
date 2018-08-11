@@ -101,7 +101,7 @@ public class GameTest {
         assertTrue(game.getBumpers().get(1).isUpgraded());
         assertTrue(game.getBumpers().get(2).isUpgraded());
         assertEquals(5,game.getAvailableBalls());
-        assertEquals(1000000,game.getCurrentScore());
+        assertEquals(1000200,game.getCurrentScore());
     }
 
     @Test

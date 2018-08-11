@@ -57,11 +57,11 @@ public class TableTest {
 
     @Test
     public void emptyTableTest(){
-        assertNull(emptyTable.getTableName());
-        assertNull(emptyTable.getBumpers());
-        assertNull(emptyTable.getDropTargets());
-        assertNull(emptyTable.getSpotTargets());
-        assertNull(emptyTable.getTargets());
+        assertEquals("",emptyTable.getTableName());
+        assertTrue(emptyTable.getBumpers().isEmpty());
+        assertTrue(emptyTable.getDropTargets().isEmpty());
+        assertTrue(emptyTable.getSpotTargets().isEmpty());
+        assertTrue(emptyTable.getTargets().isEmpty());
         assertEquals(0,emptyTable.getNumberOfDropTargets());
         assertEquals(0,emptyTable.getCurrentlyDroppedDropTargets());
         emptyTable.resetDropTargets();

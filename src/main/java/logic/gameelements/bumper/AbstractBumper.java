@@ -54,7 +54,7 @@ public abstract class AbstractBumper extends Observable implements Bumper{
         double[] args=new double[2];
         args[0]=getScore();
         args[1]=0;
-        if (remainingHitsToUpgrade()==0){
+        if (remainingHitsToUpgrade()==0 && !this.isUpgraded()){
             this.upgrade();
             args[0]=getScore();
             args[1]=0.1;
