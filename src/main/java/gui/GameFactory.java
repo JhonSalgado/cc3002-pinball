@@ -19,7 +19,7 @@ public final class GameFactory {
     public static Entity newPlayer(double x, double y){
         return Entities.builder()
                 .at(x, y)
-                .type(Interface.Types.PLAYER)
+                .type(PinBallApp.Types.PLAYER)
                 .bbox(new HitBox("rectangle", BoundingShape.box(100,30)))
                 .viewFromNode(new Rectangle(100,30, Color.BLUE))
                 .with(new CollidableComponent(true))
@@ -41,7 +41,7 @@ public final class GameFactory {
                 () -> physics.setLinearVelocity(5 * 60, -5 * 60));
         return Entities.builder()
                 .at(x,y)
-                .type(Interface.Types.BALL)
+                .type(PinBallApp.Types.BALL)
                 .bbox(new HitBox("Ball", BoundingShape.circle(10)))
                 .viewFromNode(new Circle(10, Color.LIGHTGRAY))
                 .with(physics, new CollidableComponent(true))
@@ -50,9 +50,47 @@ public final class GameFactory {
 
     public static Entity newWalls() {
         Entity walls = Entities.makeScreenBounds(100);
-        walls.setType(Interface.Types.WALL);
+        walls.setType(PinBallApp.Types.WALL);
         walls.addComponent(new CollidableComponent(true));
         return walls;
+    }
+
+    public static Entity newPopBumper(double x, double y){
+        return Entities.builder()
+                .at(x, y)
+                .type(PinBallApp.Types.PLAYER)
+                .bbox(new HitBox("bumper", BoundingShape.circle(25)))
+                .viewFromNode(new Circle(20, Color.BROWN))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
+    public static Entity newKickBumper(double x, double y){
+        return Entities.builder()
+                .at(x, y)
+                .type(PinBallApp.Types.PLAYER)
+                .bbox(new HitBox("bumper", BoundingShape.circle(25)))
+                .viewFromNode(new Circle(20, Color.ORANGE))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
+    public static Entity newDropTarget(double x, double y){
+        return Entities.builder()
+                .at(x, y)
+                .type(PinBallApp.Types.PLAYER)
+                .viewFromNodeWithBBox(new Circle(15, Color.RED))
+                .with(new CollidableComponent(true))
+                .build();
+    }
+
+    public static Entity newSpotTarget(double x, double y){
+        return Entities.builder()
+                .at(x, y)
+                .type(PinBallApp.Types.PLAYER)
+                .viewFromNodeWithBBox(new Circle(15, Color.GOLD))
+                .with(new CollidableComponent(true))
+                .build();
     }
 
 }

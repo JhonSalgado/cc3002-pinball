@@ -1,17 +1,19 @@
 package gui;
 
 import com.almasb.fxgl.app.GameApplication;
+import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.HitBox;
+import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.settings.GameSettings;
 import javafx.scene.input.KeyCode;
 
 import static gui.GameFactory.*;
 
-public class Interface extends GameApplication {
+public class PinBallApp extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
@@ -31,7 +33,17 @@ public class Interface extends GameApplication {
         Entity bg=newBackground();
         Entity playerLeft= newPlayer(125,520);
         Entity playerRight= newPlayer(285,520);
+        Entity kickBumper= newKickBumper(100,200);
+        Entity kickBumper2= newKickBumper(250,200);
+        Entity kickBumper3= newKickBumper(400,200);
+        Entity popBumper= newPopBumper(50,400);
+        Entity spotTarget= newSpotTarget(100,60);
+        Entity spotTarget2= newSpotTarget(200,60);
+        Entity spotTarget3= newSpotTarget(300,60);
         getGameWorld().addEntities(bg, playerLeft, playerRight,ball,walls);
+        getGameWorld().addEntities(kickBumper, kickBumper2, kickBumper3);
+        getGameWorld().addEntities(popBumper);
+        getGameWorld().addEntities(spotTarget, spotTarget2, spotTarget3);
     }
 
     protected void initInput(){
@@ -59,10 +71,8 @@ public class Interface extends GameApplication {
                 });
         getPhysicsWorld().addCollisionHandler(
                 new CollisionHandler(Types.PLAYER, Types.BALL) {
-
-                    @Override
-                    protected void onCollisionBegin(Entity player, Entity ball) {
-                        ;
+                    protected void onCollisionBegin(Entity player, Entity ball){
+                        ball.rotateBy(180);
                     }
                 });
     }

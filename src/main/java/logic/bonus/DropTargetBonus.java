@@ -32,5 +32,6 @@ public class DropTargetBonus extends AbstractBonus {
         super.timesTriggered++;
         game.addScore(score);
         game.upgradeAllBumpers();
+        game.getCurrentTable().resetDropTargets();
     }
 }
