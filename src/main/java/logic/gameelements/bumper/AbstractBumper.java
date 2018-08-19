@@ -74,6 +74,7 @@ public abstract class AbstractBumper extends Observable implements Bumper{
         return(this instanceof KickerBumper);
     }
 
+    @Override
     public boolean isPopBumper(){
         return(this instanceof  PopBumper);
     }

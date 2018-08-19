@@ -12,8 +12,6 @@ import com.almasb.fxgl.settings.GameSettings;
 import controller.Game;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import logic.gameelements.bumper.Bumper;
@@ -31,15 +29,20 @@ public class PinBallApp extends GameApplication {
 
     private Game game;
     private boolean isBallRemoved=true;
-    private boolean leftFlipperHit =false; //Indica si se el usuario a ordenado golpear con el flipper izquierdo
+    private boolean isLeftFlipperActive =false;
     private boolean leftFlipperBack=false; //Indica si el flipper izquierdo debe regresar a su posicion inicial
-    private boolean rightFlipperHit =false;  // Indica si se el usuario a ordenado golpear con el flipper derecho
+    private boolean isRightFlipperActive =false;
     private boolean rightFlipperBack =false; //Indica si el flipper derecho debe regresar a su posicion inicial
 
     public enum Types{
         PLAYER, BALL, WALL, HITTABLE_BUMPER, HITTABLE_TARGET
     }
 
+    /**
+     * Initiates a window with the tittle of the Game and the specified size
+     *
+     * @param gameSettings
+     */
     @Override
     protected void initSettings(GameSettings gameSettings) {
         gameSettings.setWidth(700);
@@ -48,6 +51,10 @@ public class PinBallApp extends GameApplication {
         gameSettings.setVersion("0.1");
     }
 
+    /**
+     * Creates and attached the basic Entities for the game, like the flippers, the walls and the background
+     */
+    @Override
     protected void initGame(){
 
         //Creating and Attaching entities
@@ -63,57 +70,86 @@ public class PinBallApp extends GameApplication {
         game=new Game(3);
     }
 
+    /**
+     * Creates and initiates variables for save information from the state of the Game
+     *
+     * @param vars
+     */
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("Score", 0);
         vars.put("Balls", 3);
     }
 
+    /**
+     * Cretes and initiates the text entities and attached to the GameScene
+     *
+     */
     @Override
     protected void initUI() {
-        Text scoreT= getUIFactory().newText("Score: ",Color.BLACK, 30);
-        Text score= getUIFactory().newText("",Color.BLACK, 30);
-        Text balls=new Text();
+        Text scoreTextUI= getUIFactory().newText("Score: ",Color.BLACK, 30);
+        Text scoreUI= getUIFactory().newText("", Color.BLACK, 30);
+        Text ballsTextUI= getUIFactory().newText("Balls: ",Color.BLACK, 30);
+        Text ballsUI= getUIFactory().newText("",Color.BLACK
+                , 30);
 
-        scoreT.setTranslateX(520);
-        scoreT.setTranslateY(80);
+        scoreTextUI.setTranslateX(520);
+        scoreTextUI.setTranslateY(80);
 
-        score.setTranslateX(520);
-        score.setTranslateY(120);
+        scoreUI.setTranslateX(520);
+        scoreUI.setTranslateY(120);
 
-        balls.setTranslateX(520);
-        balls.setTranslateY(200);
+        ballsTextUI.setTranslateX(520);
+        ballsTextUI.setTranslateY(260);
 
-        score.textProperty().bind(getGameState().intProperty("Score").asString());
-        balls.textProperty().bind(getGameState().intProperty("Balls").asString());
-        getGameScene().addUINodes(scoreT, score, balls);
+        ballsUI.setTranslateX(520);
+        ballsUI.setTranslateY(300);
+
+        scoreUI.textProperty().bind(getGameState().intProperty("Score").asString());
+        ballsUI.textProperty().bind(getGameState().intProperty("Balls").asString());
+
+        getGameScene().addUINodes(scoreTextUI, scoreUI, ballsTextUI,ballsUI);
     }
 
+    /**
+     * Set the action that the game will make with specifics keys
+     */
     @Override
     protected void initInput(){
         Input input=getInput();
         input.addAction(new UserAction("Hit with LeftFlipper"){
             @Override
             protected void onAction(){
-                leftFlipperHit =true;
+                isLeftFlipperActive =true;
+            }
+            @Override
+            protected void onActionEnd(){
+                leftFlipperBack=true;
             }
         },KeyCode.A);
 
         input.addAction(new UserAction("Hit with RightFlipper"){
             @Override
             protected void onAction(){
-                rightFlipperHit =true;
+                isRightFlipperActive =true;
+            }
+            @Override
+            protected void onActionEnd(){
+                rightFlipperBack=true;
             }
         },KeyCode.D);
 
         input.addAction(new UserAction("New ball"){
             @Override
             protected void onAction() {
-                if (isBallRemoved){
-                    Entity ball = newBall(200, 200);
-                    getGameWorld().addEntity(ball);
-                    isBallRemoved=false;
+                if(!game.gameOver()){
+                    if (isBallRemoved){
+                        Entity ball = newBall(200, 200);
+                        getGameWorld().addEntity(ball);
+                        isBallRemoved=false;
+                    }
                 }
+
             }
         },KeyCode.SPACE);
 
@@ -130,7 +166,7 @@ public class PinBallApp extends GameApplication {
                     if(bumper.isKickerBumper()){
                         double x=Math.random()*450;
                         double y=Math.random()*460;
-                        Entity k=newKickBumper(x,y,bumper);
+                        Entity k=newKickerBumper(x,y,bumper);
                         getGameWorld().addEntity(k);
                     }
                     else{
@@ -157,9 +193,14 @@ public class PinBallApp extends GameApplication {
         },KeyCode.N);
     }
 
+    /**
+     * Initiates the physics components of the Game
+     * and set what happen if two entities collide
+     */
     protected void initPhysics() {
         getPhysicsWorld().setGravity(0,0);
         getPhysicsWorld().addCollisionHandler(
+
                 new CollisionHandler(Types.BALL, Types.WALL) {
                     @Override
                     protected void onHitBoxTrigger(Entity ball, Entity wall, HitBox boxBall, HitBox boxWall) {
@@ -170,8 +211,15 @@ public class PinBallApp extends GameApplication {
                                 getPhysicsWorld().getJBox2DWorld().destroyBody(body);
                             }, Duration.seconds(0.1));
                             getGameWorld().removeEntity(ball);
-                            getGameState().increment("Balls",-1);
+                            game.dropBall();
+                            getGameState().increment("Balls",game.getAvailableBalls() - getGameState().getInt("Balls"));
                             isBallRemoved=true;
+                            if(game.gameOver()){
+                                Text text=getUIFactory().newText("Game Over", Color.WHITE, 50);
+                                text.setTranslateX(100);
+                                text.setTranslateY(100);
+                                getGameScene().addUINodes(text);
+                            }
                         }
                     }
                 });
@@ -181,15 +229,12 @@ public class PinBallApp extends GameApplication {
                     protected void onHitBoxTrigger(Entity hittable, Entity balls, HitBox boxHittable, HitBox ball){
                         Bumper h=(Bumper) hittable.getComponent(HittableComponent.class).getHittable();
                         h.hit();
-                        getGameState().increment("Score",game.getCurrentScore());
-                        if(h.isUpgraded()){
-                            if(h.isKickerBumper()){
-                                hittable.setView(new Circle(20,Color.LIGHTSALMON));
-                            }
-                            else{
-                                hittable.setView(new Circle(20,Color.DEEPPINK));
-                            }
-                        }
+                        getAudioPlayer().playSound(hittable.getComponent(SoundComponent.class).getAudio());
+                        getGameState().increment("Score", game.getCurrentScore() - getGameState().getInt("Score"));
+                        int addedBalls=game.getAvailableBalls()-getGameState().getInt("Balls");
+                        if(addedBalls>0){getAudioPlayer().playSound("Bonus.wav");}
+                        getGameState().increment("Balls",addedBalls);
+                        if(h.isUpgraded()) hittable.setView(hittable.getComponent(AlternateViewComponent.class).getAlternativeNode());
                     }
                 });
     getPhysicsWorld().addCollisionHandler(
@@ -198,29 +243,51 @@ public class PinBallApp extends GameApplication {
                     protected void onHitBoxTrigger(Entity hittable, Entity balls, HitBox boxHittable, HitBox ball){
                         Target h=(Target) hittable.getComponent(HittableComponent.class).getHittable();
                         h.hit();
-                        getGameState().increment("Score",game.getCurrentScore());
+                        getAudioPlayer().playSound(hittable.getComponent(SoundComponent.class).getAudio());
+                        int addedScore=game.getCurrentScore()-getGameState().getInt("Score");
+                        if(addedScore>=100000){
+                            getAudioPlayer().playSound("Bonus.wav");
+                            if(addedScore>=1000000){
+                                getGameWorld().getEntitiesByType(Types.HITTABLE_BUMPER).forEach(
+                                        e->e.setView(e.getComponent(AlternateViewComponent.class).getAlternativeNode())
+                                );
+                            }
+                        }
+                        getGameState().increment("Score", addedScore);
+                        int addedBalls=game.getAvailableBalls()-getGameState().getInt("Balls");
+                        if(addedBalls>0){getAudioPlayer().playSound("Bonus.wav");}
+                        getGameState().increment("Balls",addedBalls);
                         if(!h.isActive()){
-                            hittable.setView(new Rectangle(25,15, Color.BLACK));
+                            hittable.getComponent(SoundComponent.class).setNewAudio("DisableTarget.wav");
+                            hittable.setView(hittable.getComponent(AlternateViewComponent.class).getAlternativeNode());
+                        }
+                        else{
+                            hittable.getComponent(SoundComponent.class).setBaseAudioAsset();
+                            hittable.setView(hittable.getComponent(AlternateViewComponent.class).getBaseNode());
                         }
                     }
                 }
     );
 }
 
+    /**
+     * Set what will the entities make everytime an action is happening
+     *
+     * @param tpf
+     */
     @Override
     protected void onUpdate(double tpf){
         Entity left=getGameWorld().getEntitiesByType(Types.PLAYER).get(0);
         Entity right=getGameWorld().getEntitiesByType(Types.PLAYER).get(1);
         double rotL =left.getRotation();
         double rotR=right.getRotation();
-        if(leftFlipperHit){
+        if(isLeftFlipperActive){
             if(rotL>-50){
                 left.getComponent(PhysicsComponent.class).setAngularVelocity(-10);
             }
             else{
                 left.getComponent(PhysicsComponent.class).setAngularVelocity(0);
-                leftFlipperHit =false;
-                leftFlipperBack=true;
+                isLeftFlipperActive =false;
             }
         }
         if(leftFlipperBack){
@@ -233,14 +300,13 @@ public class PinBallApp extends GameApplication {
             }
         }
 
-        if(rightFlipperHit){
+        if(isRightFlipperActive){
             if(rotR<50){
                 right.getComponent(PhysicsComponent.class).setAngularVelocity(10);
             }
             else{
                 right.getComponent(PhysicsComponent.class).setAngularVelocity(0);
-                rightFlipperHit =false;
-                rightFlipperBack =true;
+                isRightFlipperActive =false;
             }
         }
         if(rightFlipperBack){

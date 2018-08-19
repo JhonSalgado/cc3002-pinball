@@ -12,9 +12,20 @@ import logic.gameelements.Hittable;
  */
 public interface Bumper extends Hittable {
 
+    /**
+     * Check if it is a instance of KickerBumper
+     *
+     * @return if it is a instance of KickerBumper
+     */
     boolean isKickerBumper();
 
+    /**
+     * Check if it is a instance of PopBumper
+     *
+     * @return if it is a instance of PopBumper
+     */
     boolean isPopBumper();
+
     /**
      * Gets the remaining hits the bumper has to receive to upgrade.
      *

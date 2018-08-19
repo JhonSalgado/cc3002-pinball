@@ -44,4 +44,24 @@ public abstract class AbstractTarget extends Observable implements Target {
         }
     }
 
+    /**
+     * Check if it is a instance of SpotTarget
+     *
+     * @return if it is a instance of SpotTarget
+     */
+    public boolean isSpotTarget(){
+        return(this instanceof SpotTarget);
+    }
+
+    /**
+     * Check if it is a instance of DropTarget
+     *
+     * @return if it is a instance of DropTarget
+     */
+    public boolean isDropBumper(){
+        return(this instanceof DropTarget);
+    }
+
+
+
 }

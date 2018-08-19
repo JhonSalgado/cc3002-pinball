@@ -10,29 +10,31 @@ import static junit.framework.TestCase.*;
 
 public class GameTest {
     Game game;
+    Game game2;
 
     @Before
     public void setUp(){
-        game=new Game(3,799999999);
+        game=new Game(3,566575);
+        game2=new Game(3);
     }
 
     @Test
     public void ballsTest(){
 
-        assertEquals(3,game.getAvailableBalls());
+        assertEquals(3,game2.getAvailableBalls());
 
-        game.addBall();
-        assertEquals(4,game.getAvailableBalls());
+        game2.addBall();
+        assertEquals(4,game2.getAvailableBalls());
 
-        assertFalse(game.gameOver());
+        assertFalse(game2.gameOver());
 
-        game.dropBall();
-        game.dropBall();
-        game.dropBall();
-        game.dropBall();
-        assertEquals(0,game.getAvailableBalls());
+        game2.dropBall();
+        game2.dropBall();
+        game2.dropBall();
+        game2.dropBall();
+        assertEquals(0,game2.getAvailableBalls());
 
-        assertTrue(game.gameOver());
+        assertTrue(game2.gameOver());
     }
 
     @Test

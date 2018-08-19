@@ -9,13 +9,21 @@ import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
-import javafx.scene.text.Text;
 import logic.gameelements.Hittable;
 
 public final class GameFactory {
 
+    /**
+     * Creates an Entity Player in (x,y)
+     * It will represent a flipper
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public static Entity newPlayer(double x, double y){
         PhysicsComponent physics=new PhysicsComponent();
         physics.setBodyType(BodyType.KINEMATIC);
@@ -28,6 +36,14 @@ public final class GameFactory {
                 .build();
     }
 
+    /**
+     * Creates an Entity InfoPanel in (x,y)
+     * this entity will separate the part of the screen that shows text from the part where the game is running
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public static Entity newInfoPanel(double x, double y){
         PhysicsComponent physics=new PhysicsComponent();
         physics.setBodyType(BodyType.KINEMATIC);
@@ -39,6 +55,12 @@ public final class GameFactory {
                 .build();
     }
 
+
+    /**
+     * Creates the background
+     *
+     * @return
+     */
     public static Entity newBackground(){
         return Entities.builder()
                 .viewFromNode(new Rectangle(500,600, Color.GREEN))
@@ -69,48 +91,60 @@ public final class GameFactory {
     }
 
     public static Entity newPopBumper(double x, double y, Hittable h){
+        Node node=new Circle(20, Color.BROWN);
         PhysicsComponent physics=new PhysicsComponent();
         physics.setBodyType(BodyType.STATIC);
         return Entities.builder()
                 .at(x, y)
                 .type(PinBallApp.Types.HITTABLE_BUMPER)
                 .bbox(new HitBox("bumper", BoundingShape.circle(25)))
-                .viewFromNode(new Circle(20, Color.BROWN))
+                .viewFromNode(node)
                 .with(physics, new CollidableComponent(true), new HittableComponent(h))
+                .with(new SoundComponent("popBumper.wav"))
+                .with(new AlternateViewComponent(node, new Circle(20, Color.DEEPPINK)))
                 .build();
     }
 
-    public static Entity newKickBumper(double x, double y, Hittable h){
+    public static Entity newKickerBumper(double x, double y, Hittable h){
+        Node node=new Circle(20, Color.ORANGE);
         PhysicsComponent physics=new PhysicsComponent();
         physics.setBodyType(BodyType.STATIC);
         return Entities.builder()
                 .at(x, y)
                 .type(PinBallApp.Types.HITTABLE_BUMPER)
                 .bbox(new HitBox("bumper", BoundingShape.circle(25)))
-                .viewFromNode(new Circle(20, Color.ORANGE))
+                .viewFromNode(node)
                 .with(physics, new CollidableComponent(true), new HittableComponent(h))
+                .with(new SoundComponent("kickerBumper.wav"))
+                .with(new AlternateViewComponent(node, new Circle(20, Color.LIGHTSALMON)))
                 .build();
     }
 
     public static Entity newDropTarget(double x, double y, Hittable h){
+        Node node=new Rectangle(25,15, Color.RED);
         PhysicsComponent physics=new PhysicsComponent();
         physics.setBodyType(BodyType.STATIC);
         return Entities.builder()
                 .at(x, y)
                 .type(PinBallApp.Types.HITTABLE_TARGET)
-                .viewFromNodeWithBBox(new Rectangle(25,15, Color.RED))
+                .viewFromNodeWithBBox(node)
                 .with(physics, new CollidableComponent(true), new HittableComponent(h))
+                .with(new SoundComponent("DropTarget.wav"))
+                .with(new AlternateViewComponent(node, new Rectangle(25,15, Color.BLACK)))
                 .build();
     }
 
     public static Entity newSpotTarget(double x, double y, Hittable h){
+        Node node=new Rectangle(25,15, Color.GOLD);
         PhysicsComponent physics=new PhysicsComponent();
         physics.setBodyType(BodyType.STATIC);
         return Entities.builder()
                 .at(x, y)
                 .type(PinBallApp.Types.HITTABLE_TARGET)
-                .viewFromNodeWithBBox(new Rectangle(25,15, Color.GOLD))
+                .viewFromNodeWithBBox(node)
                 .with(physics, new CollidableComponent(true), new HittableComponent(h))
+                .with(new SoundComponent("SpotTarget.wav"))
+                .with(new AlternateViewComponent(node, new Rectangle(25,15, Color.BLACK)))
                 .build();
     }
 
