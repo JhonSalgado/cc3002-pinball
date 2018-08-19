@@ -38,4 +38,4 @@ Sonido al golpe: Para cada choque que tiene la pelota contra algún hittable hay
 ### Features menores:
 Flippers distintos: Cada flipper tiene su movimiento independiente del otro.
 
-Bonus con sonido: Cuando se activa un Bonus suena, valga la redundancia, un sonido, un poco más extenso que los donidos de los choques.
+Bonus con sonido: Cuando se activa un Bonus suena, valga la redundancia, un sonido, un poco más extenso que los sonidos de los choques.
