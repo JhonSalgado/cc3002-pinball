@@ -8,8 +8,13 @@ import logic.gameelements.Hittable;
  * @author Juan-Pablo Silva
  * @see KickerBumper
  * @see PopBumper
+ * @see AbstractBumper
  */
 public interface Bumper extends Hittable {
+
+    boolean isKickerBumper();
+
+    boolean isPopBumper();
     /**
      * Gets the remaining hits the bumper has to receive to upgrade.
      *
