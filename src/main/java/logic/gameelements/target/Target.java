@@ -34,5 +34,5 @@ public interface Target extends Hittable {
      *
      * @return if it is a instance of DropTarget
      */
-    boolean isDropBumper();
+    boolean isDropTarget();
 }

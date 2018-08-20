@@ -14,6 +14,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import logic.gameelements.Hittable;
 
+/**
+ * Class for make Entities
+ *
+ * @author Jhon Salgado
+ */
+
 public final class GameFactory {
 
     /**
@@ -22,7 +28,7 @@ public final class GameFactory {
      *
      * @param x
      * @param y
-     * @return
+     * @return a Player Entity
      */
     public static Entity newPlayer(double x, double y){
         PhysicsComponent physics=new PhysicsComponent();
@@ -42,7 +48,7 @@ public final class GameFactory {
      *
      * @param x
      * @param y
-     * @return
+     * @return a infoPanel Entity
      */
     public static Entity newInfoPanel(double x, double y){
         PhysicsComponent physics=new PhysicsComponent();
@@ -59,7 +65,7 @@ public final class GameFactory {
     /**
      * Creates the background
      *
-     * @return
+     * @return a background entity
      */
     public static Entity newBackground(){
         return Entities.builder()
@@ -68,6 +74,13 @@ public final class GameFactory {
                 .build();
     }
 
+    /**
+     * Creates a ball with phisycs
+     *
+     * @param x
+     * @param y
+     * @return a ball entity
+     */
     public static Entity newBall(double x, double y){
         PhysicsComponent physics=new PhysicsComponent();
         physics.setBodyType(BodyType.DYNAMIC);
@@ -83,6 +96,11 @@ public final class GameFactory {
                 .build();
     }
 
+    /**
+     * Creates a wall around the screen that don´t let the ball scape from this
+     *
+     * @return a wall entity
+     */
     public static Entity newWalls() {
         Entity walls = Entities.makeScreenBounds(100);
         walls.setType(PinBallApp.Types.WALL);
@@ -90,6 +108,14 @@ public final class GameFactory {
         return walls;
     }
 
+    /**
+     * Creates a popBumper
+     *
+     * @param x
+     * @param y
+     * @param h
+     * @return an Entity that represents a popBumper
+     */
     public static Entity newPopBumper(double x, double y, Hittable h){
         Node node=new Circle(20, Color.BROWN);
         PhysicsComponent physics=new PhysicsComponent();
@@ -105,6 +131,14 @@ public final class GameFactory {
                 .build();
     }
 
+    /**
+     * Creates a kickerBumper
+     *
+     * @param x
+     * @param y
+     * @param h
+     * @return an Entity that represents a KickerBumper
+     */
     public static Entity newKickerBumper(double x, double y, Hittable h){
         Node node=new Circle(20, Color.ORANGE);
         PhysicsComponent physics=new PhysicsComponent();
@@ -120,6 +154,14 @@ public final class GameFactory {
                 .build();
     }
 
+    /**
+     * Creates a DropTarget
+     *
+     * @param x
+     * @param y
+     * @param h
+     * @return an Entity that represents a DropTarget
+     */
     public static Entity newDropTarget(double x, double y, Hittable h){
         Node node=new Rectangle(25,15, Color.RED);
         PhysicsComponent physics=new PhysicsComponent();
@@ -134,6 +176,14 @@ public final class GameFactory {
                 .build();
     }
 
+    /**
+     * Creates a spotTarget
+     *
+     * @param x
+     * @param y
+     * @param h
+     * @return an Entity that represents a spotTarget
+     */
     public static Entity newSpotTarget(double x, double y, Hittable h){
         Node node=new Rectangle(25,15, Color.GOLD);
         PhysicsComponent physics=new PhysicsComponent();

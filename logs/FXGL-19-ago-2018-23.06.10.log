@@ -1,0 +1,186 @@
+23:05:13.355 [JavaFX Application Thread] DEBUG GameApplication      - Logger initialized
+23:05:13.436 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+23:05:13.958 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 700.0 x 600.0
+23:05:13.959 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    700.0 x 600.0
+23:05:13.961 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+23:05:13.987 [JavaFX Application Thread] DEBUG GameApplication      - Starting FXGL
+23:05:14.033 [JavaFX Application Thread] INFO  FXGL                 - FXGL-0.5.2 on DESKTOP
+23:05:14.034 [JavaFX Application Thread] INFO  FXGL                 - Source code and latest versions at: https://github.com/AlmasB/FXGL
+23:05:14.036 [JavaFX Application Thread] INFO  FXGL                 -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+23:05:14.066 [JavaFX Application Thread] DEBUG FS                   - Loaded DesktopFSService
+23:05:14.068 [JavaFX Application Thread] DEBUG FXGL                 - Loading FXGL system data
+23:05:14.094 [JavaFX Application Thread] DEBUG DesktopFSService     - Reading from: system\fxgl.bundle
+23:05:14.134 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: FXGL
+23:05:14.137 [JavaFX Application Thread] DEBUG Bundle               - FXGL.offline.timer.version.check=2018-08-17T16:45:45.901
+23:05:14.281 [JavaFX Application Thread] DEBUG GameApplication      - FXGL started
+23:05:14.282 [JavaFX Application Thread] DEBUG GameApplication      - Logging game settings
+Title: PinBall
+Version: 0.1
+Width: 700
+Height: 600
+Fullscreen: false
+Intro: false
+Menus: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.scene.SceneFactory
+Dialog Factory: class com.almasb.fxgl.ui.FXGLDialogFactory
+UI Factory: class com.almasb.fxgl.ui.FXGLUIFactory
+Notification Service: class com.almasb.fxgl.gameplay.notification.XboxNotificationView
+Exception Handler: class com.almasb.fxgl.app.FXGLExceptionHandler
+23:05:14.286 [JavaFX Application Thread] DEBUG GameApplication      - Configuring GameApplication
+23:05:14.287 [JavaFX Application Thread] DEBUG GameApplication      - Initializing state machine and application states
+23:05:14.345 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+23:05:14.471 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+23:05:14.620 [JavaFX Application Thread] DEBUG FXGLAssets           - Loading FXGLAssets
+23:05:14.779 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/VarelaRound-Regular.ttf
+23:05:15.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/lucida_console.ttf
+23:05:15.177 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+23:05:15.318 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+23:05:15.473 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+23:05:15.610 [JavaFX Application Thread] DEBUG GameScene            - Game scene initialized: 700x600
+23:05:15.624 [JavaFX Application Thread] DEBUG GameWorld            - Game world initialized
+23:05:15.845 [JavaFX Application Thread] DEBUG PhysicsWorld         - Physics world initialized: appHeight=600, physics.ppm=50,0
+23:05:15.958 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Pause - Esc
+23:05:16.037 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+23:05:16.229 [JavaFX Application Thread] DEBUG AppStateMachine      - StartupState -> StartupState
+23:05:16.244 [JavaFX Application Thread] INFO  GameApplication      - Game configuration took:  1,957 sec
+23:05:16.253 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/fxgl_icon.png
+23:05:16.269 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+23:05:16.919 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (6.0, 29.0)
+23:05:16.920 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 700.0 x 600.0
+23:05:16.921 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+23:05:16.921 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 700.0 x 600.0
+23:05:16.922 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 706.0 x 629.0
+23:05:16.922 [JavaFX Application Thread] DEBUG GameApplication      - Running preInit()
+23:05:16.930 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+23:05:16.933 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Dev Options - CTRL+0
+23:05:16.935 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+23:05:16.937 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+23:05:16.938 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Hit with LeftFlipper - A
+23:05:16.939 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Hit with RightFlipper - D
+23:05:16.940 [JavaFX Application Thread] DEBUG Input                - Registered new binding: New ball - Space
+23:05:16.944 [JavaFX Application Thread] DEBUG Input                - Registered new binding: New Table - N
+23:05:17.006 [JavaFX Application Thread] DEBUG GameApplication      - Starting main loop
+23:05:17.011 [JavaFX Application Thread] DEBUG StartupState         - STARTUP
+23:05:17.011 [JavaFX Application Thread] DEBUG GameApplication      - Starting new game
+23:05:17.012 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+23:05:17.034 [JavaFX Application Thread] DEBUG AppStateMachine      - StartupState -> LoadingState
+23:05:17.051 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Clearing previous game
+23:05:17.052 [FXGL Background Thread 1 ] DEBUG GameWorld            - Clearing game world
+23:05:17.053 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Clearing physics world
+23:05:17.053 [FXGL Background Thread 1 ] DEBUG GameScene            - Clearing game scene
+23:05:17.057 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Game
+23:05:17.302 [FXGL Background Thread 1 ] DEBUG GameScene            - Creating render group for layer: BACKGROUND(1000)
+23:05:17.413 [FXGL Background Thread 1 ] DEBUG GameScene            - Creating render group for layer: DEFAULT(100000)
+23:05:17.425 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Physics
+23:05:17.427 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing UI
+23:05:17.433 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initialization Complete
+23:05:17.434 [FXGL Background Thread 1 ] INFO  InitAppTask          - Game initialization took: 0,383 sec
+23:05:17.440 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+23:05:17.463 [JavaFX Application Thread] DEBUG AppStateMachine      - LoadingState -> PlayState
+23:05:20.619 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:22.257 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/SpotTarget.wav
+23:05:22.257 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:25.697 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:05:31.714 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:05:32.194 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/SpotTarget.wav
+23:05:32.194 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:32.321 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DropTarget.wav
+23:05:32.322 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:33.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:33.218 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:33.536 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/SpotTarget.wav
+23:05:33.537 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:33.825 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:33.858 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:33.873 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:33.874 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DropTarget.wav
+23:05:33.875 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:33.881 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:33.890 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DropTarget.wav
+23:05:33.890 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:39.024 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:40.865 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:05:41.329 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:41.457 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:41.458 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:41.462 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:42.225 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DropTarget.wav
+23:05:42.226 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:42.370 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:42.673 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:42.961 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:42.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:43.009 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:43.011 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:43.011 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:43.014 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:43.025 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DropTarget.wav
+23:05:43.026 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:44.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:46.833 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:05:47.296 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:47.425 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:47.425 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:47.430 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:48.194 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DropTarget.wav
+23:05:48.194 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:48.337 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:48.657 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:48.929 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:48.961 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:48.977 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:48.979 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DisableTarget.wav
+23:05:48.979 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:48.982 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:49.010 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/DropTarget.wav
+23:05:49.011 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/Bonus.wav
+23:05:51.521 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:53.360 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:05:53.504 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:05:53.616 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:05:54.640 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:05:55.296 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:05:57.297 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:06:02.577 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:06:03.009 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:06:03.377 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/popBumper.wav
+23:06:05.825 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/kickerBumper.wav
+23:06:08.786 [JavaFX Application Thread] FATAL GameApplication      - Uncaught Exception:
+
+Fatal exception occurred: java.lang.NullPointerException : null
+E: com.almasb.fxgl.physics.box2d.dynamics.Fixture.getProxyId(Fixture.java:263)
+E: com.almasb.fxgl.physics.box2d.dynamics.Fixture.testProxyOverlap(Fixture.java:257)
+E: com.almasb.fxgl.physics.box2d.dynamics.ContactManager.collide(ContactManager.java:264)
+E: com.almasb.fxgl.physics.box2d.dynamics.World.step(World.java:303)
+E: com.almasb.fxgl.physics.PhysicsWorld.onUpdate(PhysicsWorld.java:232)
+E: com.almasb.fxgl.app.PlayState.onUpdate(AppStates.kt:237)
+E: com.almasb.fxgl.app.State.update(State.java:73)
+E: com.almasb.fxgl.app.AppStateMachine.onUpdate(AppStateMachine.java:100)
+E: com.almasb.fxgl.app.GameApplication.stepLoop(GameApplication.java:382)
+E: com.almasb.fxgl.app.GameApplication$2.handle(GameApplication.java:348)
+E: javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$484(AnimationTimer.java:57)
+E: java.security.AccessController.doPrivileged(Native Method)
+E: javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:56)
+E: com.sun.scenario.animation.AbstractMasterTimer.timePulseImpl(AbstractMasterTimer.java:357)
+E: com.sun.scenario.animation.AbstractMasterTimer$MainLoop.run(AbstractMasterTimer.java:267)
+E: com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:506)
+E: com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:490)
+E: com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$404(QuantumToolkit.java:319)
+E: com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+E: com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+E: com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)
+E: java.lang.Thread.run(Thread.java:745)
+
+23:06:08.787 [JavaFX Application Thread] FATAL GameApplication      - Application will now exit
+23:06:08.787 [JavaFX Application Thread] DEBUG GameApplication      - Stopping main loop
+23:06:10.768 [JavaFX Application Thread] DEBUG GameApplication      - Exiting game application
+23:06:10.771 [JavaFX Application Thread] DEBUG GameApplication      - Shutting down background threads
+23:06:10.771 [JavaFX Application Thread] DEBUG GameApplication      - Exiting FXGL
+23:06:10.772 [JavaFX Application Thread] DEBUG FXGL                 - Saving FXGL system data
+23:06:10.781 [JavaFX Application Thread] DEBUG DesktopFSService     - Writing to: system\fxgl.bundle
+23:06:10.797 [JavaFX Application Thread] DEBUG GameApplication      - Closing logger and exiting JavaFX

@@ -25,6 +25,12 @@ import java.util.Map;
 
 import static gui.GameFactory.*;
 
+/**
+ * Pinball gui aplication.
+ *
+ * @author Jhon Salgado
+ */
+
 public class PinBallApp extends GameApplication {
 
     private Game game;
@@ -283,7 +289,7 @@ public class PinBallApp extends GameApplication {
         double rotR=right.getRotation();
         if(isLeftFlipperActive){
             if(rotL>-50){
-                left.getComponent(PhysicsComponent.class).setAngularVelocity(-10);
+                left.getComponent(PhysicsComponent.class).setAngularVelocity(-15);
             }
             else{
                 left.getComponent(PhysicsComponent.class).setAngularVelocity(0);
@@ -292,7 +298,7 @@ public class PinBallApp extends GameApplication {
         }
         if(leftFlipperBack){
             if(rotL<0) {
-                left.getComponent(PhysicsComponent.class).setAngularVelocity(10);
+                left.getComponent(PhysicsComponent.class).setAngularVelocity(15);
             }
             else{
                 left.getComponent(PhysicsComponent.class).setAngularVelocity(0);
@@ -302,7 +308,7 @@ public class PinBallApp extends GameApplication {
 
         if(isRightFlipperActive){
             if(rotR<50){
-                right.getComponent(PhysicsComponent.class).setAngularVelocity(10);
+                right.getComponent(PhysicsComponent.class).setAngularVelocity(15);
             }
             else{
                 right.getComponent(PhysicsComponent.class).setAngularVelocity(0);
@@ -311,7 +317,7 @@ public class PinBallApp extends GameApplication {
         }
         if(rightFlipperBack){
             if(rotR>0) {
-                right.getComponent(PhysicsComponent.class).setAngularVelocity(-10);
+                right.getComponent(PhysicsComponent.class).setAngularVelocity(-15);
             }
             else{
                 right.getComponent(PhysicsComponent.class).setAngularVelocity(0);

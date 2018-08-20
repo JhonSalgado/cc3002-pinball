@@ -23,19 +23,6 @@ public class ExtraBallBonus extends AbstractBonus implements Observer {
     public ExtraBallBonus(Game game){
 
         this.game=game;
-        seed=System.currentTimeMillis();
-    }
-
-    /**
-     * Creates an instance of ExtraBallBonus for be used in a test
-     *
-     * @param game
-     * @param seed
-     */
-    public ExtraBallBonus(Game game, long seed){
-
-        this.game=game;
-        this.seed=seed;
     }
 
     /**
@@ -60,7 +47,7 @@ public class ExtraBallBonus extends AbstractBonus implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-        Random rnd= new Random(seed);
+        Random rnd= new Random();
         double[] prob=(double[])arg;
         if(rnd.nextDouble()<(prob[1])){
             trigger(this.game);

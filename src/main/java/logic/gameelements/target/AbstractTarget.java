@@ -58,7 +58,7 @@ public abstract class AbstractTarget extends Observable implements Target {
      *
      * @return if it is a instance of DropTarget
      */
-    public boolean isDropBumper(){
+    public boolean isDropTarget(){
         return(this instanceof DropTarget);
     }
 

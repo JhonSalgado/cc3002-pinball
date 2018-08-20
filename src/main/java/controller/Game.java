@@ -45,24 +45,6 @@ public class Game implements Observer {
     }
 
     /**
-     * Creates an instance of Game with the number of balls indicated by numberOfBalls
-     * and a seed for the Random object "rand" initialized in the {@Link ExtraBallBonus}
-     * class method update.
-     * This constructor is useful for testing.
-     *
-     * @param numberOfBalls
-     * @param seed
-     */
-    public Game(int numberOfBalls,long seed){
-        this.balls=numberOfBalls;
-        score = 0;
-        table = new EmptyTable();
-        extraBallBonus = new ExtraBallBonus(this,seed);
-        jackpotBonus = new JackPotBonus(this);
-        dropTargetBonus = new DropTargetBonus(this);
-    }
-
-    /**
      * Adds one ball to the current balls in the game.
      *
      */
