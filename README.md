@@ -41,5 +41,3 @@ Flippers distintos: Cada flipper tiene su movimiento independiente del otro.
 Bonus con sonido: Cuando se activa un Bonus suena, valga la redundancia, un sonido, un poco más extenso que los sonidos de los choques.
 ## Bugs importantes:
 A veces, y solo a veces, cuando una pelota sale del juego, la aplicación tira un error de puntero nulo, pese a que seguí todas las instruccones dadas por el foro no pude encontrar la manera de arreglarlo, pues es sumamente aleatorio, por lo que pido que al momento de testearlo, no se pruebe solo una vez.
-
-Otro bug importante es que al parecer, al menos en mi pc, solo se escuchan los sonidos cuando se tienen conectados audifonos (durante todo el desarrollo de la tarea los tenía puestos, así que no pude notarlo), y no sé a que se deba.  
